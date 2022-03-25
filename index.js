@@ -4,9 +4,6 @@ import router from "./routes.js";
 import "dotenv/config";
 import cors from "cors";
 
-const DB_URL = process.env.DB_URL;
-
-console.log(process.env);
 const PORT = process.env.PORT || 5000;
 
 const app = express();
@@ -31,9 +28,9 @@ app.use(cors(corsOptions));
 app.use("/api", router);
 
 async function startApp() {
+  const DB_URL = process.env.DB_URL;
   try {
     //connecting to DB
-    console.log(DB_URL, typeof DB_URL);
     await mongoose
       .connect(DB_URL, {
         useNewUrlParser: true,
