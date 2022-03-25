@@ -34,9 +34,16 @@ app.use("/api", router);
 async function startApp() {
   try {
     //connecting to DB
-    await mongoose.connect(DB_URL, { useNewUrlParser: true });
-
-    app.listen(PORT, () => console.log(`Server started on localhost: ${PORT}`));
+    await mongoose
+      .connect(DB_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then(() =>
+        app.listen(PORT, () =>
+          console.log(`Server up and running! on port ${PORT}`)
+        )
+      );
   } catch (e) {
     console.error(e);
   }
