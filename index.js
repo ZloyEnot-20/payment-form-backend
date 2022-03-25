@@ -1,13 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import router from "./routes.js";
-import dotenv from "dotenv";
+import "dotenv/config";
 import cors from "cors";
 
-dotenv.config();
+const DB_URL = process.env.DB_URL;
 
-const { DB_URL } = process.env;
-
+console.log(process.env);
 const PORT = process.env.PORT || 5000;
 
 const app = express();
