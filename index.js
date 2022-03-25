@@ -34,11 +34,13 @@ app.use("/api", router);
 async function startApp() {
   try {
     //connecting to DB
+    console.log(DB_URL, typeof DB_URL);
     await mongoose
       .connect(DB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useMongoClient: true,
       })
       .then(() =>
         app.listen(PORT, () =>
