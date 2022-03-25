@@ -30,7 +30,7 @@ app.use("/api", router);
 async function startApp() {
   try {
     //connecting to DB
-    await mongoose.connect(DB_URL);
+    await mongoose.connect(DB_URL, { useNewUrlParser: true });
 
     app.listen(PORT, () => console.log(`Server started on localhost: ${PORT}`));
   } catch (e) {
