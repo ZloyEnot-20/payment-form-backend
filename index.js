@@ -11,10 +11,9 @@ app.use(express.json());
 
 //Disabling CORS policy
 const corsOptions = {
-  origin: function (origin, callback) {
-    callback(null, true);
-  },
+  origin: "*",
   credentials: true,
+  optionSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
