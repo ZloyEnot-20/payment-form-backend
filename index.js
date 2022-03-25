@@ -39,8 +39,6 @@ async function startApp() {
       .connect(DB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true,
-        useMongoClient: true,
       })
       .then(() =>
         app.listen(PORT, () =>
