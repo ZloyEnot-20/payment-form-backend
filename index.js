@@ -38,6 +38,7 @@ async function startApp() {
       .connect(DB_URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useCreateIndex: true,
       })
       .then(() =>
         app.listen(PORT, () =>
