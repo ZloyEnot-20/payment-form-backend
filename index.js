@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import router from "./routes.js";
-import "dotenv/config";
+import dotenv from "dotenv";
 import cors from "cors";
 
+dotenv.config();
 const { DB_URL } = process.env;
 
 const PORT = process.env.PORT || 5000;
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 
+//list of trusted urls
 const whitelist = ["http://localhost:3000"];
 
 const corsOptions = {
