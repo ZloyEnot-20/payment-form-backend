@@ -9,11 +9,19 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.json());
 
+//list of trusted urls
+const whitelist = ["http://localhost:3000"];
+
 //Disabling CORS policy
 const corsOptions = {
-  origin: "*",
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
-  optionSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
