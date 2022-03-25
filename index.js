@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 dotenv.config();
+
 const { DB_URL } = process.env;
 
 const PORT = process.env.PORT || 5000;
@@ -15,6 +16,7 @@ app.use(express.json());
 //list of trusted urls
 const whitelist = ["http://localhost:3000"];
 
+//Disabling CORS policy
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
